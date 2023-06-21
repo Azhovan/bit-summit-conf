@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supplier
+  namespace: default
+  labels:
+    app: supplier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: supplier
+  template:
+    metadata:
+      labels:
+        app: supplier
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "supplier"
+        dapr.io/log-level: "debug"
+    spec:
+      containers:
+        - name: supplier
+          image: ghcr.io/azhovan/supplier:v0.7
+---

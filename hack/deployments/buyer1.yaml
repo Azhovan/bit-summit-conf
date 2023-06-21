@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buyer1
+  namespace: default
+  labels:
+    app: buyer1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buyer1
+  template:
+    metadata:
+      labels:
+        app: buyer1
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "buyer1"
+        dapr.io/app-port: "8083"
+        dapr.io/log-level: "debug"
+    spec:
+      containers:
+        - name: buyer1
+          image: ghcr.io/azhovan/buyer1:v0.3
+---
