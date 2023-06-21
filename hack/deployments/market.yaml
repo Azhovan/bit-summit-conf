@@ -1,25 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: supplier
+  name: market
   namespace: default
   labels:
-    app: supplier
+    app: market
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: supplier
+      app: market
   template:
     metadata:
       labels:
-        app: supplier
+        app: market
       annotations:
         dapr.io/enabled: "true"
-        dapr.io/app-id: "supplier"
+        dapr.io/app-id: "market"
+        dapr.io/app-port: "8086"
         dapr.io/log-level: "debug"
     spec:
       containers:
-        - name: supplier
-          image: ghcr.io/azhovan/supplier:v0.8
+        - name: market
+          image: ghcr.io/azhovan/market:v0.7
 ---

@@ -25,8 +25,8 @@ func main() {
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, os.Kill, os.Interrupt)
 
-	ticker := time.NewTicker(2 * time.Second)
-	for i := 0; i < 1000; i++ {
+	ticker := time.NewTicker(10 * time.Second)
+	for i := 0; i < 20; i++ {
 		select {
 		case <-ticker.C:
 			{

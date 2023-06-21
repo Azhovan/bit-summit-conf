@@ -22,5 +22,5 @@ spec:
     spec:
       containers:
         - name: buyer2
-          image: ghcr.io/azhovan/buyer2:v0.2
+          image: ghcr.io/azhovan/buyer2:v0.3
 ---

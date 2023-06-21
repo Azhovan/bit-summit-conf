@@ -17,10 +17,10 @@ spec:
       annotations:
         dapr.io/enabled: "true"
         dapr.io/app-id: "buyer1"
-        dapr.io/app-port: "8083"
+        dapr.io/app-port: "8082"
         dapr.io/log-level: "debug"
     spec:
       containers:
         - name: buyer1
-          image: ghcr.io/azhovan/buyer1:v0.3
+          image: ghcr.io/azhovan/buyer1:v0.8
 ---
