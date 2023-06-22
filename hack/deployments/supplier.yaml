@@ -18,6 +18,7 @@ spec:
         dapr.io/enabled: "true"
         dapr.io/app-id: "supplier"
         dapr.io/log-level: "debug"
+        dapr.io/config: "tracing"
     spec:
       containers:
         - name: supplier

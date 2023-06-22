@@ -19,6 +19,7 @@ spec:
         dapr.io/app-id: "buyer2"
         dapr.io/app-port: "8084"
         dapr.io/log-level: "debug"
+        dapr.io/config: "tracing"
     spec:
       containers:
         - name: buyer2

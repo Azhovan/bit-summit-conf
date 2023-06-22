@@ -11,7 +11,8 @@ import (
 )
 
 var (
-	address = ":8086"
+	address   = ":8086"
+	sateStore = "state"
 )
 
 func main() {
@@ -46,6 +47,15 @@ func handler(ctx context.Context, in *common.InvocationEvent) (out *common.Conte
 		return nil, err
 	}
 
-	fmt.Printf("offer for product:%s from: %s, val: %d\n", offer.Product, offer.From, offer.Val)
-	return
+	fmt.Printf("offer for: %s from: %s, val: %d\n", offer.Product, offer.From, offer.Val)
+
+	client, err := dapr.NewClient()
+	if err != nil {
+		panic(err)
+	}
+	defer client.Close()
+	key := fmt.Sprintf("%s.%s", offer.Product, offer.From)
+	err = client.SaveState(ctx, sateStore, key, []byte(string(offer.Val)), nil)
+
+	return nil, err
 }
